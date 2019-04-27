@@ -3,8 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {AboutComponent} from './about/about.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import {LoginPage} from './login/login.page';
-import {HomePage} from './home/home.page';
 import {ListPage} from './list/list.page';
+import {BalancePage} from './balance/balance.page';
+import {RecoveryPage} from './recovery/recovery.page';
+import {TransferPage} from './transfer/transfer.page';
 
 const routes: Routes = [
   {
@@ -17,10 +19,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
   },
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  },
+  { path: 'list', component: ListPage },
   {
     path: 'notaries-list',
     loadChildren: './notaries-list/notaries-list.module#NotariesListPageModule',
@@ -29,11 +28,11 @@ const routes: Routes = [
   { path: 'add-notary', loadChildren: './add-notary/add-notary.module#AddNotaryPageModule' },
   { path: 'setup-wallet', loadChildren: './setup-wallet/setup-wallet.module#SetupWalletPageModule' },
   { path: 'notary-sign', loadChildren: './notary-sign/notary-sign.module#NotarySignPageModule' },
-  { path: 'recovery', loadChildren: './recovery/recovery.module#RecoveryPageModule' },
+  { path: 'recovery', component: RecoveryPage },
   { path: 'login', component: LoginPage },
-  { path: 'balance', loadChildren: './balance/balance.module#BalancePageModule' },
+  { path: 'balance', component: BalancePage },
   { path: 'transfer-history', loadChildren: './transfer-history/transfer-history.module#TransferHistoryPageModule' },
-  { path: 'transfer', loadChildren: './transfer/transfer.module#TransferPageModule' },
+  { path: 'transfer', component: TransferPage },
   { path: 'setup-result', loadChildren: './setup-result/setup-result.module#SetupResultPageModule' },
   { path: 'create-account', loadChildren: './create-account/create-account.module#CreateAccountPageModule' },
  

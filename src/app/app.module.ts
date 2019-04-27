@@ -11,12 +11,20 @@ import { AppRoutingModule } from './app-routing.module';
 import {AboutComponent} from './about/about.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import {LoginPage} from './login/login.page';
+import {ListPage} from './list/list.page';
+import {BalancePage} from './balance/balance.page';
+import {RecoveryPage} from './recovery/recovery.page';
+import {TransferPage} from './transfer/transfer.page';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    LoginPage
+    LoginPage,
+    ListPage,
+    BalancePage,
+      RecoveryPage,
+    TransferPage,
   ],
   entryComponents: [],
   imports: [
