@@ -1,0 +1,15 @@
+{
+  "name": "solvador",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "web3": "^1.0.0-beta.52"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

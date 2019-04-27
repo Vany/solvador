@@ -33,3 +33,9 @@ inc/
 /MANIFEST.bak
 /pm_to_blib
 /*.zip
+
+.idea/
+
+web3_test/conf.json
+web3_test/node_modules
+web3_test/package-lock.json
