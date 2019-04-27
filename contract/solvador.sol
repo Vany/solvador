@@ -3,7 +3,9 @@ contract SolvadorWallet {
 
     event SomeOneWantsToRecover();
 
-    bytes pubkey; 
+    bytes pubkey;
+    mapping(int => bytes) notary;
+
 
     constructor(bytes _pk) public {
         pubkey = _pk;
@@ -11,6 +13,13 @@ contract SolvadorWallet {
     
     function() external payable { }
     
+    function set_notary(bytes _data) public returns (bool) {
+        for (int i = 0; i < 3; i++) {
+            if (notary[i].length > 0 ) continue;
+            notary[i] = _data;
+        }
+        return false;
+    }
 
     function check()
     internal
@@ -20,3 +29,4 @@ contract SolvadorWallet {
       return true;
   }    
 }
+
