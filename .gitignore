@@ -7,6 +7,17 @@
 *.pm.tdy
 *.bs
 
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+*.sublime-workspace
+.vscode/
+npm-debug.log*
+
 # Devel::Cover
 cover_db/
 
@@ -35,7 +46,26 @@ inc/
 /*.zip
 
 .idea/
+.ionic/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+www/
+node_modules/
+tmp/
+temp/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+$RECYCLE.BIN/
 
 web3_test/conf.json
 web3_test/node_modules
 web3_test/package-lock.json
+
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
