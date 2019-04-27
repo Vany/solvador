@@ -5,5 +5,56 @@
 </ion-header>
 
 <ion-content>
-
+    <ion-tabs>
+        <ion-tab tab="balance">Balance</ion-tab>
+        <ion-tab tab="history">History</ion-tab>
+      
+        <ion-tab-bar slot="bottom">
+      
+          <ion-tab-button tab="balance">
+            <ion-label>Balance</ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col><ion-label>Assets</ion-label></ion-col>
+                <ion-col><ion-label>Amount</ion-label></ion-col>
+              </ion-row>
+                <ion-row *ngFor="let balance of balances" class="item-note"> 
+                    <ion-col>
+                        <ion-label>{{balance.assetName}}</ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label>{{balance.amount}}</ion-label>
+                    </ion-col>
+                  </ion-row>
+            </ion-grid>
+          </ion-tab-button>
+      
+          <ion-tab-button tab="history">
+            <ion-label>History</ion-label>
+            <ion-grid>
+                <ion-row>
+                  <ion-col><ion-label>TxHash</ion-label></ion-col>
+                  <ion-col><ion-label>To</ion-label></ion-col>
+                  <ion-col><ion-label>Block</ion-label></ion-col>
+                  <ion-col><ion-label>Amount</ion-label></ion-col>
+                </ion-row>
+                  <ion-row *ngFor="let tx of txs" class="item-note"> 
+                      <ion-col>
+                          <ion-label>{{tx.txHash}}</ion-label>
+                      </ion-col>
+                      <ion-col>
+                          <ion-label>{{tx.to}}</ion-label>
+                      </ion-col>
+                      <ion-col>
+                          <ion-label>{{tx.block}}</ion-label>
+                      </ion-col>
+                      <ion-col>
+                          <ion-label>{{tx.amount}}</ion-label>
+                      </ion-col>
+                    </ion-row>
+              </ion-grid>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+      <ion-button>Transfer</ion-button>
 </ion-content>
