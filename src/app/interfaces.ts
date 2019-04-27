@@ -1,7 +1,7 @@
 
 export interface Blockchain {
-    getBalance(address: string): number;
-    recoveryAccount(source: string, destination: string): boolean;
-    deployContract(address: string): boolean;
-    transferAssets(destination: string, count: number): boolean;
+    getBalance(address: string): Promise<number> ;
+    fullRecovery(recoveryHashes: string[]): Promise<string>;
+    deployContract(): Promise<boolean>;
+    transferAssets(to: string, amount: number): Promise<boolean>;
 }
