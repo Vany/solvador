@@ -15,20 +15,38 @@ import {ListPage} from './list/list.page';
 import {BalancePage} from './balance/balance.page';
 import {RecoveryPage} from './recovery/recovery.page';
 import {TransferPage} from './transfer/transfer.page';
+import {CreateAccountPage} from './create-account/create-account.page';
+import {AddNotaryPage} from './add-notary/add-notary.page';
+import {SetupWalletPage} from './setup-wallet/setup-wallet.page';
+import {NotarySignPage} from './notary-sign/notary-sign.page';
+import {FormsModule} from '@angular/forms';
+import {TransferHistoryPage} from './transfer-history/transfer-history.page';
+import {SetupResultPage} from './setup-result/setup-result.page';
+import {NotariesListPage} from './notaries-list/notaries-list.page';
+import {HomePage} from './home/home.page';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
+    HomePage,
     LoginPage,
     ListPage,
     BalancePage,
-      RecoveryPage,
+    RecoveryPage,
     TransferPage,
+    CreateAccountPage,
+    AddNotaryPage,
+    SetupWalletPage,
+    NotarySignPage,
+    TransferHistoryPage,
+    SetupResultPage,
+    NotariesListPage,
   ],
   entryComponents: [],
   imports: [
     BrowserModule,
+    FormsModule,
     IonicModule.forRoot(),
     AppRoutingModule
   ],

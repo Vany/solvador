@@ -7,6 +7,14 @@ import {ListPage} from './list/list.page';
 import {BalancePage} from './balance/balance.page';
 import {RecoveryPage} from './recovery/recovery.page';
 import {TransferPage} from './transfer/transfer.page';
+import {AddNotaryPage} from './add-notary/add-notary.page';
+import {CreateAccountPage} from './create-account/create-account.page';
+import {SetupWalletPage} from './setup-wallet/setup-wallet.page';
+import {NotarySignPage} from './notary-sign/notary-sign.page';
+import {TransferHistoryPage} from './transfer-history/transfer-history.page';
+import {SetupResultPage} from './setup-result/setup-result.page';
+import {NotariesListPage} from './notaries-list/notaries-list.page';
+import {HomePage} from './home/home.page';
 
 const routes: Routes = [
   {
@@ -14,28 +22,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  { path: 'about', component: AboutComponent },
   {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    path: 'home', component: HomePage,
   },
   { path: 'list', component: ListPage },
-  {
-    path: 'notaries-list',
-    loadChildren: './notaries-list/notaries-list.module#NotariesListPageModule',
-    canActivate: [AuthGuardService]
-  },
-  { path: 'add-notary', loadChildren: './add-notary/add-notary.module#AddNotaryPageModule' },
-  { path: 'setup-wallet', loadChildren: './setup-wallet/setup-wallet.module#SetupWalletPageModule' },
-  { path: 'notary-sign', loadChildren: './notary-sign/notary-sign.module#NotarySignPageModule' },
+  { path: 'notaries-list', component: NotariesListPage, canActivate: [AuthGuardService] },
+  { path: 'add-notary', component: AddNotaryPage },
+  { path: 'setup-wallet', component: SetupWalletPage },
+  { path: 'notary-sign', component: NotarySignPage },
   { path: 'recovery', component: RecoveryPage },
   { path: 'login', component: LoginPage },
   { path: 'balance', component: BalancePage },
-  { path: 'transfer-history', loadChildren: './transfer-history/transfer-history.module#TransferHistoryPageModule' },
+  { path: 'transfer-history', component: TransferHistoryPage },
   { path: 'transfer', component: TransferPage },
-  { path: 'setup-result', loadChildren: './setup-result/setup-result.module#SetupResultPageModule' },
-  { path: 'create-account', loadChildren: './create-account/create-account.module#CreateAccountPageModule' },
- 
+  { path: 'setup-result', component: SetupResultPage },
+  { path: 'create-account', component: CreateAccountPage },
+  { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({
