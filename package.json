@@ -46,10 +46,7 @@
     "@angular/compiler-cli": "~7.2.2",
     "@angular/language-service": "~7.2.2",
     "@ionic/angular-toolkit": "~1.5.1",
-<<<<<<< HEAD
     "@types/googlemaps": "^3.30.19",
-=======
->>>>>>> b5946cee7d62b1ded9a1b017c101d0af4995bbb9
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~10.14.2",
