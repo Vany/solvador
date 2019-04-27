@@ -70,3 +70,5 @@ yarn-lock.json
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+contract/t
