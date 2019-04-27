@@ -24,6 +24,7 @@ import {TransferHistoryPage} from './pages/transfer-history/transfer-history.pag
 import {SetupResultPage} from './pages/setup-result/setup-result.page';
 import {NotariesListPage} from './pages/notaries-list/notaries-list.page';
 import {HomePage} from './pages/home/home.page';
+import {NavigationService} from './services/navigation.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {HomePage} from './pages/home/home.page';
     StatusBar,
     SplashScreen,
     AuthGuardService,
+    NavigationService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
