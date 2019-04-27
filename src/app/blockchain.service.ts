@@ -2,16 +2,17 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {Blockchain} from './interfaces';
 import {Account} from 'web3-eth-accounts'
 import {Contract} from 'web3-eth-contract'
+import * as contract_abi  from './contract/salvador.json';
+let bytecode = require('./contract/solvador.json');
+bytecode="0x"+bytecode.object;
 
 import Web3 from 'web3';
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 
-const contract_abi = [];
 const contract_address = "";
-const bytecode = "";
 
 export class BlockchainService implements Blockchain {
   private web3: Web3;
@@ -22,7 +23,12 @@ export class BlockchainService implements Blockchain {
   constructor(privateKey: string) {
     this.web3 = new Web3(new Web3.providers.HttpProvider('http://68.183.156.248:8545'));
     this.account = this.web3.eth.accounts.wallet.add(privateKey);
-    this.contract = new this.web3.eth.Contract(contract_abi, contract_address);
+    // this.contract = new this.web3.eth.Contract(contract_abi, contract_address);
+  }
+
+  async findContract(): Promise<boolean>{
+    this.contract=new this.web3.eth.Contract(contract_abi, contract_address);
+    return true;
   }
 
   async getBalance(address: string): Promise<number> {
@@ -44,10 +50,11 @@ export class BlockchainService implements Blockchain {
         ));
   }
 
-  async deployContract(): Promise<boolean> {
-    const subj = (await this.contract.deploy({data: bytecode, arguments: []}));
+  async deployContract(): Promise<string> {
+    let contract=new this.web3.eth.Contract(contract_abi);
+    const subj = (await contract.deploy({data: bytecode, arguments: []}));
     this.contract = (await subj.send({from: this.account.address}));
-    return true;
+    return this.contract.address;
   }
 
   async transferAssets(to: string, amount: number): Promise<boolean> {
