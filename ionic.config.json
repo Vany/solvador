@@ -1,6 +1,8 @@
 {
   "name": "solvador",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular",
   "id": "c3742bf0"
 }
