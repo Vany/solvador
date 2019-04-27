@@ -6,6 +6,7 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
+import {BlockchainService} from "./app/blockchain.service";
 
 declare const require: any;
 

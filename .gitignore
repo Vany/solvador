@@ -64,7 +64,8 @@ $RECYCLE.BIN/
 
 web3_test/conf.json
 web3_test/node_modules
-web3_test/package-lock.json
+package-lock.json
+yarn-lock.json
 
 .DS_Store
 Thumbs.db
