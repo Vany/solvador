@@ -2,11 +2,24 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {Blockchain} from './interfaces';
 import {Account} from 'web3-eth-accounts'
 import {Contract} from 'web3-eth-contract'
-import * as contract_abi  from './contract/salvador.json';
-let bytecode = require('./contract/solvador.json');
-bytecode="0x"+bytecode.object;
+import {AbiType} from 'web3-utils'
+const solc = require('solc');
+const fs = require('fs');
+import * as _contract_abi  from './contract/salvador.json';
+// import * as _bytecode from './contract/solvador.json';
+// let bytecode="0x"+JSON.stringify(_bytecode.object);
+// let contract_abi=JSON.parse(_contract_abi);
+let contract_abi=_contract_abi;
 
 import Web3 from 'web3';
+import {json} from "@angular-devkit/core";
+
+const input = fs.readFileSync('./contract/solvador.sol');
+const output = solc.compile(input.toString(), 1);
+const bytecode = output.contracts['Token'].bytecode;
+const abi = JSON.parse(output.contracts['Token'].interface);
+
+// Contract object
 
 // @Injectable({
 //   providedIn: 'root'
