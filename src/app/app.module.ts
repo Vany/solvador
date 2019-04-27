@@ -25,6 +25,7 @@ import {SetupResultPage} from './pages/setup-result/setup-result.page';
 import {NotariesListPage} from './pages/notaries-list/notaries-list.page';
 import {HomePage} from './pages/home/home.page';
 import {NavigationService} from './services/navigation.service';
+import {NotaryService} from './services/notary.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {NavigationService} from './services/navigation.service';
     SplashScreen,
     AuthGuardService,
     NavigationService,
+    NotaryService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
