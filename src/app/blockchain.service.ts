@@ -5,6 +5,7 @@ import {Contract} from 'web3-eth-contract'
 
 import Web3 from 'web3';
 
+// @ts-ignore
 @Injectable({
   providedIn: 'root'
 })
