@@ -3,13 +3,35 @@ import { CanActivate } from '@angular/router';
 
 const USERKEY = 'userId';
 
+export class User {
+    name: string;
+    publicKey: string;
+    privateKey: string;
+    role: string;
+    wallet?: string;
+}
+
 @Injectable()
 export class AuthGuardService implements CanActivate  {
     authenticatedUser = '';
 
+    users: User[] = [
+        {name: 'user_1', role: 'customer', privateKey: '', publicKey: ''},
+        {name: 'user_2', role: 'customer', privateKey: '', publicKey: ''},
+        {name: 'notary_1', role: 'notary', privateKey: '', publicKey: ''},
+        {name: 'notary_2', role: 'notary', privateKey: '', publicKey: ''},
+        {name: 'notary_3', role: 'notary', privateKey: '', publicKey: ''},
+        {name: 'notary_4', role: 'notary', privateKey: '', publicKey: ''},
+        {name: 'notary_5', role: 'notary', privateKey: '', publicKey: ''},
+    ];
+
     constructor() { }
 
-    getUthenticatedUser(): string {
+    getUserList(): User[] {
+        return this.users;
+    }
+
+    getAuthenticatedUser(): string {
         this.authenticatedUser = localStorage.getItem(USERKEY);
         return this.authenticatedUser;
     }
@@ -27,16 +49,16 @@ export class AuthGuardService implements CanActivate  {
         return ''; // call api
     }
 
-    // login (username: string) {
-    //   console.log('login:' + username);
-    //   this.authenticatedUser = username;
-    //   localStorage.setItem('authenticatedUser', this.authenticatedUser);
-    // }
-    //
-    // logout() {
-    //   console.log('logout');
-    //   this.authenticatedUser = '';
-    //   localStorage.setItem('authenticatedUser', this.authenticatedUser);
-    // }
+    login(name: string) {
+      console.log('login:' + name);
+      this.authenticatedUser = name;
+      localStorage.setItem('authenticatedUser', this.authenticatedUser);
+    }
+
+    logout() {
+      console.log('logout');
+      this.authenticatedUser = '';
+      localStorage.setItem('authenticatedUser', this.authenticatedUser);
+    }
 
 }

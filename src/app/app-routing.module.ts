@@ -19,12 +19,10 @@ import {HomePage} from './pages/home/home.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
-  {
-    path: 'home', component: HomePage,
-  },
+  { path: 'home', component: HomePage },
   { path: 'list', component: ListPage },
   { path: 'notaries-list', component: NotariesListPage, canActivate: [AuthGuardService] },
   { path: 'add-notary', component: AddNotaryPage },
