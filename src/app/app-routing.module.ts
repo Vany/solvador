@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import {AboutComponent} from './about/about.component';
+import {AboutComponent} from './pages/about/about.component';
 import {AuthGuardService} from './services/auth-guard.service';
-import {LoginPage} from './login/login.page';
-import {ListPage} from './list/list.page';
-import {BalancePage} from './balance/balance.page';
-import {RecoveryPage} from './recovery/recovery.page';
-import {TransferPage} from './transfer/transfer.page';
-import {AddNotaryPage} from './add-notary/add-notary.page';
-import {CreateAccountPage} from './create-account/create-account.page';
-import {SetupWalletPage} from './setup-wallet/setup-wallet.page';
-import {NotarySignPage} from './notary-sign/notary-sign.page';
-import {TransferHistoryPage} from './transfer-history/transfer-history.page';
-import {SetupResultPage} from './setup-result/setup-result.page';
-import {NotariesListPage} from './notaries-list/notaries-list.page';
-import {HomePage} from './home/home.page';
+import {LoginPage} from './pages/login/login.page';
+import {ListPage} from './pages/list/list.page';
+import {BalancePage} from './pages/balance/balance.page';
+import {RecoveryPage} from './pages/recovery/recovery.page';
+import {TransferPage} from './pages/transfer/transfer.page';
+import {AddNotaryPage} from './pages/add-notary/add-notary.page';
+import {CreateAccountPage} from './pages/create-account/create-account.page';
+import {SetupWalletPage} from './pages/setup-wallet/setup-wallet.page';
+import {NotarySignPage} from './pages/notary-sign/notary-sign.page';
+import {TransferHistoryPage} from './pages/transfer-history/transfer-history.page';
+import {SetupResultPage} from './pages/setup-result/setup-result.page';
+import {NotariesListPage} from './pages/notaries-list/notaries-list.page';
+import {HomePage} from './pages/home/home.page';
 
 const routes: Routes = [
   {
