@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 ionic build
+npx cap sync
+
 cd www
 git init
 git add .
