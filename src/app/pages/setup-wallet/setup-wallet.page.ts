@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-
+import { BlockchainService } from '../../services/blockchain/blockchain.service';
 @Component({
     selector: 'app-setup-wallet',
     templateUrl: './setup-wallet.page.html',
@@ -22,6 +22,7 @@ export class SetupWalletPage implements OnInit {
 
     setup() {
       // todo handle click button event
+
     }
 }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlockchainService } from '../../services/blockchain/blockchain.service';
 
 @Component({
   selector: 'app-balance',
@@ -18,8 +19,16 @@ export class BalancePage implements OnInit {
     }
   ];
 
+  private bcService: BlockchainService;
 
-  constructor() { }
+  constructor() {
+    this.bcService = new BlockchainService();
+  }
+
+  async getBalance() {
+    const balance = await this.bcService.getBalance('0xA85f0407Bf7d5Aeb7E776573659e85Af32eD40ed');
+    console.log(balance);
+  }
 
   ngOnInit() {
   }
