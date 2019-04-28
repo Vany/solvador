@@ -5,7 +5,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-buttons slot="secondary">
+    <ion-buttons slot="end">
 
       <ion-button *ngIf="loggedIn" [routerLink]="['/login']" fragment="logout">
         <ion-label>{{ user }}</ion-label>
