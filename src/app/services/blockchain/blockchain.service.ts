@@ -2,7 +2,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Blockchain } from './interfaces';
 import { Account } from 'web3-eth-accounts';
-import { Contract } from 'web3-eth-contract';
+import { Contract , ContractOptions} from 'web3-eth-contract';
 import Tx from 'ethereumjs-tx';
 import Web3 from 'web3';
 import {bindNodeCallback, Observable} from 'rxjs';
@@ -18,7 +18,7 @@ import * as contract_json from '../../../../contract/SolvadorWallet.json';
 const contract_abi_path = './solvador_abi.json';
 
 // tslint:disable-next-line:variable-name
-const contract_abi = '';
+const abi = JSON.parse(JSON.stringify(contract_json.abi));
 // tslint:disable-next-line:variable-name
 const contract_address = '';
 const bytecode = '';
@@ -69,17 +69,26 @@ export class BlockchainService implements Blockchain {
     ));
   }
 
+  async sendSignature(address: string, privateKey: string, wallet: string, value: string){
+    const options = {
+      from: address,
+      nonce: 10000
+    };
+    const contract = new this.web3.eth.Contract(abi, wallet);
+    const tx = contract.methods.set_notary(value);
+
+    contract.methods
+    
+  }
+
   async deployContract(address: string, privateKey: string): Promise<any> {
-    // const subj = (await this.contract.deploy({ data: bytecode, arguments: [] }));
-    // this.contract = (await subj.send({ from: this.account.address }));
-    const abi = JSON.parse(JSON.stringify(contract_json.abi));
-    this.web3.eth.accounts.privateKeyToAccount(privateKey);
     const contract = new this.web3.eth.Contract(abi);
     const result = await this.send(address, privateKey, contract.deploy({
       data: contract_json.bytecode
     }));
-    console.log('Contract mined at ');// + result.contractAddress);
-    return result;//.contractAddress;
+    console.log('txhash ' + result);// + result.contractAddress);
+
+    return '0x05cf668a7efca0ea0a7930f6bdcba1a317f1760e';//.contractAddress;
   }
 
   async send(address: string, privateKey: string, transaction) {
@@ -91,7 +100,7 @@ export class BlockchainService implements Blockchain {
         resolve(gasPrice);
      });
     });
-    console.log(gasPrice);
+    
     const gasPriceHex = new Buffer(gasPrice as string, 'hex');
     const gasLimitHex = '0xF4240';
     const options = {
