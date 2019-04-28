@@ -84,10 +84,22 @@ export class BlockchainService implements Blockchain {
 
   async send(address: string, privateKey: string, transaction) {
     const gas = await transaction.estimateGas({from: address});
+    
+    const gasPrice = await new Promise(async (resolve, reject) => {
+      this.web3.eth.getGasPrice().then(gasPrice => {
+        console.log('gasPrice = ' + gasPrice);
+        resolve(gasPrice);
+     });
+    });
+    console.log(gasPrice);
+    const gasPriceHex = new Buffer(gasPrice as string, 'hex');
+    const gasLimitHex = '0xF4240';
     const options = {
         from: address,
         data: transaction.encodeABI(),
-        gas : 100000
+        gas : gasLimitHex,
+        gasPrice: gasPriceHex,
+        nonce: 10000
     };
     const tx = new Tx(options);
     var key = new Buffer(privateKey, 'hex')
