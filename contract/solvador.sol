@@ -7,6 +7,8 @@ contract SolvadorWallet {
     }
     
     event Recovered();
+    event ValidSignature();
+    
 
     address owner;
     mapping(int => bytes) signs; // notary signs
@@ -47,16 +49,18 @@ contract SolvadorWallet {
         }
         if (v < 27) v += 27;
         if (v != 27 && v != 28) return false;
-        return ecrecover(_passportHash, v, r, s) == _pubk;
+        address signed = ecrecover(_passportHash, v, r, s);
+        return signed == _pubk;
     }
 
     function restore(bytes32 _passportHash, address _notary) public payable returns (bool) {
         bytes storage cur = signs[restored];
-        if (! signcheck(_passportHash, cur, _notary)) return false;
+        bool valid =signcheck(_passportHash, cur, _notary);
+        if (valid) emit ValidSignature();
         restored++;
-        if (notarys < restored ) {
-            emit Recovered();
+        if (notarys <= restored ) {
             owner = msg.sender;
+            emit Recovered();
         }
         return true;
     }
