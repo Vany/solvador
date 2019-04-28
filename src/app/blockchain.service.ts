@@ -64,6 +64,7 @@ export class BlockchainService implements Blockchain {
   }
 
   async deployContract(): Promise<string> {
+    //не сходятся типы
     let contract=new this.web3.eth.Contract(contract_abi);
     const subj = (await contract.deploy({data: bytecode, arguments: []}));
     this.contract = (await subj.send({from: this.account.address}));
