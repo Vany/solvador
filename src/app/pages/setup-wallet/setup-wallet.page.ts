@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { BlockchainService } from '../../services/blockchain/blockchain.service';
+import {BlockchainService} from '../../services/blockchain/blockchain.service';
 import {AuthGuardService, User} from '../../services/auth-guard.service';
 import {NavController} from '@ionic/angular';
 
@@ -23,25 +23,27 @@ export class SetupWalletPage implements OnInit {
     }
 
     ngOnInit() {
-       this.publicKey = this.user.publicKey;
+        this.publicKey = this.user.publicKey;
     }
 
     async setup() {
-      // todo handle click button event
+        // todo handle click button event
         console.log('setup');
-        const wallet = await this.bcService.deployContract(this.user.publicKey, this.user.privateKey);
-        this.user.wallet = wallet;
-
-        this.user.wallet = '12313131';
-        this.navCtrl.navigateRoot('setup-result').then(r => {
-                console.log('navigated');
+        this.bcService.deployContract2(this.user.publicKey, this.user.privateKey).then(wallet => {
+                this.user.wallet = wallet;
+                this.navCtrl.navigateRoot('setup-result').then(r => {
+                        console.log('navigated');
+                    }
+                );
             }
         );
-        }
+    }
+
     setTestData() {
-       this.signs[0].value = this.user.notarySign1;
-       this.signs[1].value = this.user.notarySign2;
-       this.signs[2].value = this.user.notarySign3;
+        console.log(this.user);
+        this.signs[0].value = this.user.notarySign1;
+        this.signs[1].value = this.user.notarySign2;
+        this.signs[2].value = this.user.notarySign3;
     }
 
 
