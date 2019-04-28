@@ -15,7 +15,6 @@ import {BalancePage} from './pages/balance/balance.page';
 import {RecoveryPage} from './pages/recovery/recovery.page';
 import {TransferPage} from './pages/transfer/transfer.page';
 import {CreateAccountPage} from './pages/create-account/create-account.page';
-import {AddNotaryPage} from './pages/add-notary/add-notary.page';
 import {SetupWalletPage} from './pages/setup-wallet/setup-wallet.page';
 import {NotarySignPage} from './pages/notary-sign/notary-sign.page';
 import {FormsModule} from '@angular/forms';
@@ -37,7 +36,6 @@ import {HeaderComponent} from './header/header.component';
     RecoveryPage,
     TransferPage,
     CreateAccountPage,
-    AddNotaryPage,
     SetupWalletPage,
     NotarySignPage,
     TransferHistoryPage,

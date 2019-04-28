@@ -14,7 +14,6 @@ export class NavigationService {
         { title: 'Кошелек', url: '/balance', icon: 'logo-bitcoin' },
         { title: 'Восстановление доступа', url: '/recovery', icon: 'sync'},
         { title: 'Список нотариусов', url: '/notaries-list', icon: 'list'},
-        { title: 'Добавить нотариуса', url: '/add-notary', icon: 'add'},
         { title: 'About', url: '/about', icon: 'information-circle-outline'},
     ];
 

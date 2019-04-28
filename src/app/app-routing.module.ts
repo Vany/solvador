@@ -6,7 +6,6 @@ import {LoginPage} from './pages/login/login.page';
 import {BalancePage} from './pages/balance/balance.page';
 import {RecoveryPage} from './pages/recovery/recovery.page';
 import {TransferPage} from './pages/transfer/transfer.page';
-import {AddNotaryPage} from './pages/add-notary/add-notary.page';
 import {CreateAccountPage} from './pages/create-account/create-account.page';
 import {SetupWalletPage} from './pages/setup-wallet/setup-wallet.page';
 import {NotarySignPage} from './pages/notary-sign/notary-sign.page';
@@ -23,7 +22,6 @@ const routes: Routes = [
   },
   { path: 'home', component: HomePage },
   { path: 'notaries-list', component: NotariesListPage, canActivate: [AuthGuardService] },
-  { path: 'add-notary', component: AddNotaryPage },
   { path: 'setup-wallet', component: SetupWalletPage },
   { path: 'notary-sign', component: NotarySignPage },
   { path: 'recovery', component: RecoveryPage },
