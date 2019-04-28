@@ -1,0 +1,19 @@
+<app-header title="Перевод ассетов"></app-header>
+
+
+<ion-content>
+    <ion-item>
+        <ion-input clearInput placeholder="Кому" required [(ngModel)]="recipient"></ion-input>
+    </ion-item>
+    <ion-select value="{{asset}}" interface="popover">
+        <ion-select-option *ngFor="let asset of assetList" (click)="setAsset(asset)"
+                           value="{{asset}}">{{asset}}</ion-select-option>
+    </ion-select>
+
+    <ion-item>
+        <ion-input clearInput placeholder="Сумма" type="number" required [(ngModel)]="amount"></ion-input>
+    </ion-item>
+
+    <ion-button color="primary" (click)="transfer()">Отправить</ion-button>
+
+</ion-content>

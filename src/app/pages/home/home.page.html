@@ -1,0 +1,61 @@
+<app-header title="Главная"></app-header>
+
+
+<ion-content>
+    <ion-card class="welcome-card">
+      <ion-img src="/assets/shapes.svg"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle>Solvador</ion-card-subtitle>
+        <ion-card-title>Восстановления доступа к токенам</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Система позволяет восстановить доступ к блокчейн аккаунту.</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>Navigation</ion-label>
+      </ion-list-header>
+
+      <ion-item routerLink="/notaries-list">
+        <ion-icon slot="start" color="medium" name="list"></ion-icon>
+        <ion-label>Список нотариусов</ion-label>
+      </ion-item>
+      <ion-item routerLink="/notary-sign">
+        <ion-icon slot="start" color="medium" name="key"></ion-icon>
+        <ion-label>Notary sign</ion-label>
+      </ion-item>
+      <ion-item routerLink="/setup-wallet">
+        <ion-icon slot="start" color="medium" name="wallet"></ion-icon>
+        <ion-label>Setup wallet</ion-label>
+      </ion-item>
+      <ion-item routerLink="/login">
+        <ion-icon slot="start" color="medium" name="log-in"></ion-icon>
+        <ion-label>Login</ion-label>
+      </ion-item>
+      <ion-item routerLink="/create-account">
+        <ion-icon slot="start" color="medium" name="person-add"></ion-icon>
+        <ion-label>Create account</ion-label>
+      </ion-item>
+      <ion-item routerLink="/balance">
+        <ion-icon slot="start" color="medium" name="logo-bitcoin"></ion-icon>
+        <ion-label>Balance</ion-label>
+      </ion-item>
+      <ion-item routerLink="/transfer-history">
+        <ion-icon slot="start" color="medium" name="paper"></ion-icon>
+        <ion-label>Transfer history</ion-label>
+      </ion-item>
+      <ion-item routerLink="/transfer">
+        <ion-icon slot="start" color="medium" name="send"></ion-icon>
+        <ion-label>Transfer</ion-label>
+      </ion-item>
+      <ion-item routerLink="/recovery">
+        <ion-icon slot="start" color="medium" name="sync"></ion-icon>
+        <ion-label>Recovery</ion-label>
+      </ion-item>
+
+
+
+    </ion-list>
+</ion-content>

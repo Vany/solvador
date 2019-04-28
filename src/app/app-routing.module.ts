@@ -1,41 +1,43 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {AboutComponent} from './pages/about/about.component';
+import {AuthGuardService} from './services/auth-guard.service';
+import {LoginPage} from './pages/login/login.page';
+import {BalancePage} from './pages/balance/balance.page';
+import {RecoveryPage} from './pages/recovery/recovery.page';
+import {TransferPage} from './pages/transfer/transfer.page';
+import {CreateAccountPage} from './pages/create-account/create-account.page';
+import {SetupWalletPage} from './pages/setup-wallet/setup-wallet.page';
+import {NotarySignPage} from './pages/notary-sign/notary-sign.page';
+import {TransferHistoryPage} from './pages/transfer-history/transfer-history.page';
+import {SetupResultPage} from './pages/setup-result/setup-result.page';
+import {NotariesListPage} from './pages/notaries-list/notaries-list.page';
+import {HomePage} from './pages/home/home.page';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
-  },
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  },
-  {
-    path: 'notaries-list',
-    loadChildren: './notaries-list/notaries-list.module#NotariesListPageModule'
-  },
-  { path: 'add-notary', loadChildren: './add-notary/add-notary.module#AddNotaryPageModule' },
-  { path: 'setup-wallet', loadChildren: './setup-wallet/setup-wallet.module#SetupWalletPageModule' },
-  { path: 'notary-sign', loadChildren: './notary-sign/notary-sign.module#NotarySignPageModule' },
-  { path: 'recovery', loadChildren: './recovery/recovery.module#RecoveryPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'balance', loadChildren: './balance/balance.module#BalancePageModule' },
-  { path: 'transfer-history', loadChildren: './transfer-history/transfer-history.module#TransferHistoryPageModule' },
-  { path: 'transfer', loadChildren: './transfer/transfer.module#TransferPageModule' },
-  { path: 'setup-result', loadChildren: './setup-result/setup-result.module#SetupResultPageModule' },
-  { path: 'create-account', loadChildren: './create-account/create-account.module#CreateAccountPageModule' },
- 
+  { path: 'home', component: HomePage },
+  { path: 'notaries-list', component: NotariesListPage, canActivate: [AuthGuardService] },
+  { path: 'setup-wallet', component: SetupWalletPage },
+  { path: 'notary-sign', component: NotarySignPage },
+  { path: 'recovery', component: RecoveryPage },
+  { path: 'login', component: LoginPage },
+  { path: 'balance', component: BalancePage },
+  { path: 'transfer-history', component: TransferHistoryPage },
+  { path: 'transfer', component: TransferPage },
+  { path: 'setup-result', component: SetupResultPage },
+  { path: 'create-account', component: CreateAccountPage },
+  { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, useHash: true})
+],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
