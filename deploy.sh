@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+npm install
 ionic build
 npx cap sync
 
