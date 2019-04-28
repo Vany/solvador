@@ -39,7 +39,6 @@ export class SetupWalletPage implements OnInit {
         );
         }
     setTestData() {
-        console.log(this.user);
        this.signs[0].value = this.user.notarySign1;
        this.signs[1].value = this.user.notarySign2;
        this.signs[2].value = this.user.notarySign3;

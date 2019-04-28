@@ -1,7 +1,9 @@
+/* tslint:disable */
 import { EventEmitter, Injectable } from '@angular/core';
 import { Blockchain } from './interfaces';
 import { Account } from 'web3-eth-accounts';
 import { Contract } from 'web3-eth-contract';
+import Tx from 'ethereumjs-tx';
 import Web3 from 'web3';
 import {bindNodeCallback, Observable} from 'rxjs';
 import * as contract_json from '../../../../contract/SolvadorWallet.json';
@@ -67,7 +69,7 @@ export class BlockchainService implements Blockchain {
     ));
   }
 
-  async deployContract(address: string, privateKey: string): Promise<string> {
+  async deployContract(address: string, privateKey: string): Promise<any> {
     // const subj = (await this.contract.deploy({ data: bytecode, arguments: [] }));
     // this.contract = (await subj.send({ from: this.account.address }));
     const abi = JSON.parse(JSON.stringify(contract_json.abi));
@@ -76,18 +78,32 @@ export class BlockchainService implements Blockchain {
     const result = await this.send(address, privateKey, contract.deploy({
       data: contract_json.bytecode
     }));
-    console.log('Contract mined at ' + result.contractAddress);
-    return result.contractAddress;
+    console.log('Contract mined at ');// + result.contractAddress);
+    return result;//.contractAddress;
   }
 
   async send(address: string, privateKey: string, transaction) {
     const gas = await transaction.estimateGas({from: address});
     const options = {
+        from: address,
         data: transaction.encodeABI(),
         gas : 100000
     };
-    const signedTransaction = bindNodeCallback(this.web3.eth.signTransaction)([{options}, {privateKey}]);
-    return await this.web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
+    const tx = new Tx(options);
+    var key = new Buffer(privateKey, 'hex')
+    tx.sign(key);
+    const stx = tx.serialize();
+
+    const hash = await new Promise(async (resolve, reject) => {
+      this.web3.eth.sendSignedTransaction('0x' + stx.toString('hex'), (err, result) => {
+        if (err) { console.log(err); return; }
+        resolve(result);
+        console.log('contract creation tx: ' + result);
+      });
+    });
+    return hash;
+    //console.log(signedTransaction);
+    //return await this.web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 }
 
   async transferAssets(to: string, amount: number): Promise<boolean> {
