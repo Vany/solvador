@@ -20,6 +20,7 @@ export class SetupWalletPage implements OnInit {
     }
 
     ngOnInit() {
+       this.publicKey = this.userService.getAuthenticatedUser().publicKey;
     }
 
     setup() {
@@ -29,6 +30,13 @@ export class SetupWalletPage implements OnInit {
                 console.log('navigated');
             }
         );
+    }
+
+    setTestData() {
+       const user = this.userService.getAuthenticatedUser();
+       this.signs[0].value = user.notarySign1;
+       this.signs[1].value = user.notarySign2;
+       this.signs[2].value = user.notarySign3;
     }
 
 
