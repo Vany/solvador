@@ -44,7 +44,7 @@ export class BlockchainService implements Blockchain {
   // 0xA85f0407Bf7d5Aeb7E776573659e85Af32eD40ed for testing
   async getBalance(address: string): Promise<number> {
     console.log('get balance');
-    const web3 = new Web3(new Web3.providers.HttpProvider('http://ropsten.infura.io/v3/165e981477d146ecb702fce1ffbef166'));
+    const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/165e981477d146ecb702fce1ffbef166'));
     return Number(web3.utils.fromWei((await web3.eth.getBalance(address))));
   }
 
