@@ -1,6 +1,14 @@
 <app-header title="Восстановление доступа"></app-header>
 
-
 <ion-content>
+    <ion-item>
+        <ion-input clearInput placeholder="Адрес кошелька" required [(ngModel)]="address"></ion-input>
+    </ion-item>
+
+    <ion-item *ngFor="let sign of signs">
+        <ion-input clearInput placeholder="Подпись {{sign.label}} нотариуса" required [(ngModel)]="sign.value"></ion-input>
+    </ion-item>
+
+    <ion-button color="primary" (click)="recovery()">Setup</ion-button>
 
 </ion-content>

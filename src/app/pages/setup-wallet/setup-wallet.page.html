@@ -2,17 +2,14 @@
 
 <ion-content>
     <ion-item>
-        <ion-label>Private key</ion-label>
-        <ion-input clearInput placeholder="Enter private key" required [(ngModel)]="privateKey"></ion-input>
+        <ion-input clearInput placeholder="Приватный ключ" required [(ngModel)]="privateKey"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label>Public key</ion-label>
-        <ion-input clearInput placeholder="Enter public key" required [(ngModel)]="publicKey"></ion-input>
+        <ion-input clearInput placeholder="Публичный ключ" required [(ngModel)]="publicKey"></ion-input>
     </ion-item>
 
     <ion-item *ngFor="let sign of signs">
-        <ion-label>{{sign.label}} notary's sign</ion-label>
-        <ion-input clearInput placeholder="{{sign.label}} notary's sign" required [(ngModel)]="sign.value"></ion-input>
+        <ion-input clearInput placeholder="Подпись {{sign.label}} нотариуса" required [(ngModel)]="sign.value"></ion-input>
     </ion-item>
 
     <ion-button color="primary" (click)="setup()">Setup</ion-button>
