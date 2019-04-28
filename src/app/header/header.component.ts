@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AuthGuardService} from '../services/auth-guard.service';
+import {AuthGuardService, User} from '../services/auth-guard.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -25,8 +25,8 @@ export class HeaderComponent implements OnInit {
   }
 
   checkLogin() {
-    this.user = this.auth.getAuthenticatedUser();
-    this.loggedIn = this.auth.getAuthenticatedUser() !== '';
+    this.user = this.auth.getAuthenticatedUser().name;
+    this.loggedIn = this.auth.getAuthenticatedUser() !== null;
     console.log('is logged in: ', this.loggedIn);
   }
 

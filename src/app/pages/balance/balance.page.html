@@ -3,25 +3,28 @@
 
 <ion-content>
   <div>
-        <ion-label>Balance</ion-label>
-        <ion-button routerLink="/transfer-history">History</ion-button>
-      </div>
-            <ion-label>Balance</ion-label>
-            <ion-grid>
-              <ion-row>
-                <ion-col><ion-label>Assets</ion-label></ion-col>
-                <ion-col><ion-label>Amount</ion-label></ion-col>
-              </ion-row>
-                <ion-row *ngFor="let balance of balances" class="item-note"> 
-                    <ion-col>
-                        <ion-label>{{balance.assetName}}</ion-label>
-                    </ion-col>
-                    <ion-col>
-                        <ion-label>{{balance.amount}}</ion-label>
-                    </ion-col>
-                  </ion-row>
-            </ion-grid>
-      
-            <ion-button (click)="getBalance()">Balance</ion-button>
-      <ion-button routerLink="/transfer">Transfer</ion-button>
+    <ion-label>Balance</ion-label>
+    <ion-button routerLink="/transfer-history">History</ion-button>
+  </div>
+  <ion-label>Balance</ion-label>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label>Assets</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>Amount</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let balance of balances" class="item-note">
+      <ion-col>
+        <ion-label>{{balance.assetName}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>{{balance.amount}}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button routerLink="/transfer">Transfer</ion-button>
 </ion-content>
