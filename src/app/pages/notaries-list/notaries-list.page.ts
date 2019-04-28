@@ -25,18 +25,6 @@ export class NotariesListPage implements OnInit {
 
   ngOnInit() {
     this.items = this.notaryService.getNotayList();
-
-      // tslint:disable-next-line:prefer-const
-      let mapProp = {
-        center: new google.maps.LatLng(55.7596136, 37.6472348),
-        zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        markers: [
-
-        ]
-      };
-      this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-    console.log("notaries list init");
   }
 
 }
