@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { BlockchainService } from '../../services/blockchain/blockchain.service';
+import {AuthGuardService, User} from '../../services/auth-guard.service';
+import { userInfo } from 'os';
+import {ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-transfer-history',
@@ -23,9 +28,14 @@ export class TransferHistoryPage implements OnInit {
     }
   ];
 
-  constructor() { }
+  user: User;
+  constructor(private auth: AuthGuardService, private route: Router) {
+    this.user = this.auth.getAuthenticatedUser();
+   }
 
   ngOnInit() {
+    const url = 'https://ropsten.etherscan.io/address/' + this.user.wallet;
+    window.location.href = url;
   }
 
 }
