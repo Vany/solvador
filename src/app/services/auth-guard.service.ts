@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {CanActivate} from '@angular/router';
 
 const USERKEY = 'userId';
 
@@ -27,7 +27,8 @@ export class AuthGuardService implements CanActivate {
         { name: 'notary_5', role: 'notary', privateKey: '', publicKey: '', wallet: '' },
     ];
 
-    constructor() { }
+    constructor() {
+    }
 
     getUserList(): User[] {
         return this.users;
