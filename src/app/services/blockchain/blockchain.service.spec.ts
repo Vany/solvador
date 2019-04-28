@@ -10,10 +10,13 @@ describe('BlockchainService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be created', () => {
+  it('should get balance', () => {
     const service: BlockchainService = TestBed.get(BlockchainService);
-    service.getBalance('0xb2ed4cf5b6b2e466fa8df88e937bf66c5d86b83e').then((result)=>{
-      expect(result).toBe(100);
+    service.getBalance2('0xb2ed4cf5b6b2e466fa8df88e937bf66c5d86b83e').subscribe((data: any) => {
+      this.balance = data;
+      expect(data).toBe(100);
+      console.log('Balance: ', data);
     });
   });
+
 });

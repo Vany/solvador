@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlockchainService } from '../../services/blockchain/blockchain.service';
+import {NotaryService} from '../../services/notary.service';
 
 @Component({
   selector: 'app-balance',
@@ -19,15 +20,16 @@ export class BalancePage implements OnInit {
     }
   ];
 
-  private bcService: BlockchainService;
+  balance: number;
 
-  constructor() {
-    this.bcService = new BlockchainService();
+  constructor(private bcService: BlockchainService) {
   }
 
-  async getBalance() {
-    const balance = await this.bcService.getBalance('0xA85f0407Bf7d5Aeb7E776573659e85Af32eD40ed');
-    console.log(balance);
+  getBalance() {
+    this.bcService.getBalance2('0xA85f0407Bf7d5Aeb7E776573659e85Af32eD40ed').subscribe((data: any) => {
+      this.balance = data;
+      console.log('Balance: ', data);
+    });
   }
 
   ngOnInit() {

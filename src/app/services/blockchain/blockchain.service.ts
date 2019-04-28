@@ -2,8 +2,8 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Blockchain } from './interfaces';
 import { Account } from 'web3-eth-accounts';
 import { Contract } from 'web3-eth-contract';
-import * as fs from 'fs';
 import Web3 from 'web3';
+import {bindNodeCallback, Observable} from 'rxjs';
 
 // @ts-ignore
 @Injectable({
@@ -32,6 +32,13 @@ export class BlockchainService implements Blockchain {
     // A06EE48D9F0E637636B24925C964572BCDB8991E4B2EF357A79E9BD2292CFA7B
     // this.account = this.web3.eth.accounts.wallet.add(privateKey);
     // this.contract = new this.web3.eth.Contract(contract_abi, contract_address);
+  }
+
+  public getBalance2(address: string): Observable<number[]> {
+    console.log('get balance2');
+    const web3 = new Web3(new Web3.providers.HttpProvider('http://ropsten.infura.io/v3/165e981477d146ecb702fce1ffbef166'));
+
+    return bindNodeCallback(web3.eth.getBalance)(address);
   }
 
   // 0xA85f0407Bf7d5Aeb7E776573659e85Af32eD40ed for testing

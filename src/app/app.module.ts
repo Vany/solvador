@@ -25,6 +25,7 @@ import {HomePage} from './pages/home/home.page';
 import {NavigationService} from './services/navigation.service';
 import {NotaryService} from './services/notary.service';
 import {HeaderComponent} from './header/header.component';
+import {BlockchainService} from './services/blockchain/blockchain.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {HeaderComponent} from './header/header.component';
     AuthGuardService,
     NavigationService,
     NotaryService,
+    BlockchainService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
