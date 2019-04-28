@@ -28,7 +28,7 @@ export class BlockchainService implements Blockchain {
 
   // constructor(privateKey: string)
   constructor() {
-    this.web3 = new Web3(new Web3.providers.HttpProvider('http://ropsten.infura.io/v3/165e981477d146ecb702fce1ffbef166'));
+    this.web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/165e981477d146ecb702fce1ffbef166'));
     // A06EE48D9F0E637636B24925C964572BCDB8991E4B2EF357A79E9BD2292CFA7B
     // this.account = this.web3.eth.accounts.wallet.add(privateKey);
     // this.contract = new this.web3.eth.Contract(contract_abi, contract_address);
@@ -36,7 +36,7 @@ export class BlockchainService implements Blockchain {
 
   public getBalance2(address: string): Observable<number[]> {
     console.log('get balance2');
-    const web3 = new Web3(new Web3.providers.HttpProvider('http://ropsten.infura.io/v3/165e981477d146ecb702fce1ffbef166'));
+    const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/165e981477d146ecb702fce1ffbef166'));
 
     return bindNodeCallback(web3.eth.getBalance)(address);
   }
