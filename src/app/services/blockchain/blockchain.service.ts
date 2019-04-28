@@ -4,6 +4,7 @@ import { Account } from 'web3-eth-accounts';
 import { Contract } from 'web3-eth-contract';
 import Web3 from 'web3';
 import {bindNodeCallback, Observable} from 'rxjs';
+import * as contract_json from '../../../../contract/SolvadorWallet.json';
 
 // @ts-ignore
 @Injectable({
@@ -66,11 +67,28 @@ export class BlockchainService implements Blockchain {
     ));
   }
 
-  async deployContract(): Promise<boolean> {
-    const subj = (await this.contract.deploy({ data: bytecode, arguments: [] }));
-    this.contract = (await subj.send({ from: this.account.address }));
-    return true;
+  async deployContract(address: string, privateKey: string): Promise<string> {
+    // const subj = (await this.contract.deploy({ data: bytecode, arguments: [] }));
+    // this.contract = (await subj.send({ from: this.account.address }));
+    const abi = JSON.parse(JSON.stringify(contract_json.abi));
+    this.web3.eth.accounts.privateKeyToAccount(privateKey);
+    const contract = new this.web3.eth.Contract(abi);
+    const result = await this.send(address, privateKey, contract.deploy({
+      data: contract_json.bytecode
+    }));
+    console.log('Contract mined at ' + result.contractAddress);
+    return result.contractAddress;
   }
+
+  async send(address: string, privateKey: string, transaction) {
+    const gas = await transaction.estimateGas({from: address});
+    const options = {
+        data: transaction.encodeABI(),
+        gas : 100000
+    };
+    const signedTransaction = bindNodeCallback(this.web3.eth.signTransaction)([{options}, {privateKey}]);
+    return await this.web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
+}
 
   async transferAssets(to: string, amount: number): Promise<boolean> {
     const result = (await this.contract.methods.transfer.send(to, amount));
