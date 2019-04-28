@@ -53,6 +53,10 @@ export class AuthGuardService implements CanActivate {
         return currentUser;
     }
 
+    getAuthenticatedUserName(): string {
+        return (this.authenticatedUser && this.authenticatedUser !== '') ? this.authenticatedUser : '';
+    }
+
     canActivate(): boolean {
         this.authenticatedUser = localStorage.getItem(USERKEY);
         const isAuth = (this.authenticatedUser && this.authenticatedUser !== '');
