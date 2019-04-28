@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { BlockchainService } from '../../services/blockchain/blockchain.service';
 import { AuthGuardService, User } from '../../services/auth-guard.service';
@@ -29,10 +30,18 @@ export class SetupWalletPage implements OnInit {
     async setup() {
         // todo handle click button event
         console.log('setup');
-        const wallet = await this.bcService.deployContract(this.user.publicKey, this.user.privateKey);
-        this.user.wallet = wallet;
-        this.navCtrl.navigateRoot('setup-result').then(r => {
-            console.log('navigated');
+        // const wallet = await this.bcService.deployContract(this.user.publicKey, this.user.privateKey);
+        // this.user.wallet = wallet;
+        // this.navCtrl.navigateRoot('setup-result').then(r => {
+        //     console.log('navigated');
+        // }
+        // );
+        this.bcService.deployContract2(this.user.publicKey, this.user.privateKey).then(wallet => {
+            this.user.wallet = wallet;
+            this.navCtrl.navigateRoot('setup-result').then(r => {
+                console.log('navigated');
+            }
+            );
         }
         );
     }
@@ -43,6 +52,7 @@ export class SetupWalletPage implements OnInit {
     }
 
     setTestData() {
+        console.log(this.user);
         this.signs[0].value = this.user.notarySign1;
         this.signs[1].value = this.user.notarySign2;
         this.signs[2].value = this.user.notarySign3;
