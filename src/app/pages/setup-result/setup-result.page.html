@@ -1,9 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>setup-result</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Результат настройки"></app-header>
 
 <ion-content>
-
+    <ion-item>
+        <ion-label>Публичный ключ</ion-label>
+        <ion-input readonly="true" [ngModel]="publicKey"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Адрес кошелька</ion-label>
+        <ion-input readonly="true" [ngModel]="contractAddress"></ion-input>
+    </ion-item>
 </ion-content>

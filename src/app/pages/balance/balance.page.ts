@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlockchainService } from '../../services/blockchain/blockchain.service';
 import {NotaryService} from '../../services/notary.service';
 import {AuthGuardService, User} from '../../services/auth-guard.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-balance',
@@ -13,17 +14,16 @@ export class BalancePage implements OnInit {
   public balances: Array<{ assetName: string; amount: number; }> = [
     {
       assetName: 'Ethereum',
-      amount: 100
-    },
-    {
-      assetName: 'KNC',
-      amount: 1002
+      amount: 0
     }
   ];
 
   user: User;
-  constructor(private bcService: BlockchainService, private auth: AuthGuardService) {
-    this.user = this.auth.getAuthenticatedUser();
+  constructor(private bcService: BlockchainService, private auth: AuthGuardService, private route: ActivatedRoute) {
+    route.params.subscribe(val => {
+      this.user = this.auth.getAuthenticatedUser();
+      this.getBalance(this.user.publicKey);
+    });
   }
 
   getBalance(address) {
@@ -39,6 +39,7 @@ export class BalancePage implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.auth.getAuthenticatedUser();
     this.getBalance(this.user.publicKey);
   }
 

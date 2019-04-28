@@ -2,14 +2,14 @@
 
 <ion-content>
     <ion-item>
-        <ion-input clearInput placeholder="Приватный ключ" required [(ngModel)]="privateKey"></ion-input>
-    </ion-item>
-    <ion-item>
+        <ion-label>Публичный ключ</ion-label>
         <ion-input clearInput placeholder="Публичный ключ" required [(ngModel)]="publicKey"></ion-input>
     </ion-item>
 
+    <ion-button color="light" (click)="setTestData()">Вставить тестовые данные</ion-button>
     <ion-item *ngFor="let sign of signs">
-        <ion-input clearInput placeholder="Подпись {{sign.label}} нотариуса" required [(ngModel)]="sign.value"></ion-input>
+        <ion-input clearInput placeholder="Подпись {{sign.label}} нотариуса" required
+                   [(ngModel)]="sign.value"></ion-input>
     </ion-item>
 
     <ion-button color="primary" (click)="setup()">Задать</ion-button>

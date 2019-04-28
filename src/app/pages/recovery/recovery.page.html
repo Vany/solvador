@@ -2,9 +2,10 @@
 
 <ion-content>
     <ion-item>
+        <ion-label>Адрес кошелька</ion-label>
         <ion-input clearInput placeholder="Адрес кошелька" required [(ngModel)]="address"></ion-input>
     </ion-item>
-
+    <ion-button color="light" (click)="setTestData()">Вставить тестовые данные</ion-button>
     <ion-item *ngFor="let sign of signs">
         <ion-input clearInput placeholder="Подпись {{sign.label}} нотариуса" required [(ngModel)]="sign.value"></ion-input>
     </ion-item>
