@@ -1,13 +1,5 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Главная
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Главная"></app-header>
+
 
 <ion-content>
     <ion-card class="welcome-card">
@@ -29,10 +21,6 @@
       <ion-item routerLink="/notaries-list">
         <ion-icon slot="start" color="medium" name="list"></ion-icon>
         <ion-label>Список нотариусов</ion-label>
-      </ion-item>
-      <ion-item routerLink="/add-notary">
-        <ion-icon slot="start" color="medium" name="add"></ion-icon>
-        <ion-label>Добавить нотариуса</ion-label>
       </ion-item>
       <ion-item routerLink="/notary-sign">
         <ion-icon slot="start" color="medium" name="key"></ion-icon>
@@ -67,7 +55,6 @@
         <ion-label>Recovery</ion-label>
       </ion-item>
 
-      <ion-item  [routerLink]="['/login']" fragment="logout">Logout</ion-item>
 
 <!--      <ion-item href="./setup-result">-->
 <!--        <ion-label>Setup result</ion-label>-->

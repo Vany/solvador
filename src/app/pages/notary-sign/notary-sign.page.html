@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>notary-sign</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Подпись нотариуса"></app-header>
 
 <ion-content>
+    <ion-item>
+        <ion-input clearInput placeholder="Данные для подписи" required [(ngModel)]="dataForSign"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-input clearInput placeholder="Приватный ключ" required [(ngModel)]="privateKey"></ion-input>
+    </ion-item>
 
+    <ion-button color="primary" (click)="sign()">Подписать</ion-button>
+    <ion-item>
+        <ion-label>Результат</ion-label>
+        <ion-input readonly="true" [ngModel]="result"></ion-input>
+    </ion-item>
 </ion-content>

@@ -33,6 +33,7 @@ export class AuthGuardService implements CanActivate  {
 
     getAuthenticatedUser(): string {
         this.authenticatedUser = localStorage.getItem(USERKEY);
+        console.log('getAuthenticatedUser(): ', this.authenticatedUser);
         return this.authenticatedUser;
     }
 
@@ -52,13 +53,13 @@ export class AuthGuardService implements CanActivate  {
     login(name: string) {
       console.log('login:' + name);
       this.authenticatedUser = name;
-      localStorage.setItem('authenticatedUser', this.authenticatedUser);
+      localStorage.setItem(USERKEY, name);
     }
 
     logout() {
       console.log('logout');
       this.authenticatedUser = '';
-      localStorage.setItem('authenticatedUser', this.authenticatedUser);
+      localStorage.setItem(USERKEY, this.authenticatedUser);
     }
 
 }

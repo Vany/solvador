@@ -3,11 +3,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {AboutComponent} from './pages/about/about.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import {LoginPage} from './pages/login/login.page';
-import {ListPage} from './pages/list/list.page';
 import {BalancePage} from './pages/balance/balance.page';
 import {RecoveryPage} from './pages/recovery/recovery.page';
 import {TransferPage} from './pages/transfer/transfer.page';
-import {AddNotaryPage} from './pages/add-notary/add-notary.page';
 import {CreateAccountPage} from './pages/create-account/create-account.page';
 import {SetupWalletPage} from './pages/setup-wallet/setup-wallet.page';
 import {NotarySignPage} from './pages/notary-sign/notary-sign.page';
@@ -23,9 +21,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'home', component: HomePage },
-  { path: 'list', component: ListPage },
   { path: 'notaries-list', component: NotariesListPage, canActivate: [AuthGuardService] },
-  { path: 'add-notary', component: AddNotaryPage },
   { path: 'setup-wallet', component: SetupWalletPage },
   { path: 'notary-sign', component: NotarySignPage },
   { path: 'recovery', component: RecoveryPage },
