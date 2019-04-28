@@ -10,7 +10,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class LoginPage implements OnInit {
 
   users: User[];
-  constructor(private auth: AuthGuardService, private route: Router, private router: ActivatedRoute) { }
+  constructor(private auth: AuthGuardService, private route: Router, private router: ActivatedRoute) {
+    router.params.subscribe(val => {
+      this.users = this.auth.getUserList();
+      if (this.router.snapshot.fragment === 'logout') {
+        this.logout();
+      }
+    });
+  }
 
   ngOnInit() {
     this.users = this.auth.getUserList();
