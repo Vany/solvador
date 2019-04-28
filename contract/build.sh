@@ -7,4 +7,4 @@ truffle compile || exit 0
 
 echo build success
 
-cp build/contracts/SolvadorWallet.json ../
+cp build/contracts/SolvadorWallet.json ../../src/app/services/blockchain
